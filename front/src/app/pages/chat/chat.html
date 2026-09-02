@@ -1,0 +1,41 @@
+<div class="chat-page">
+
+  <h2>
+    Mode : {{ role }}
+  </h2>
+
+  <div class="messages">
+
+    @for (message of messages; track $index) {
+
+      <div class="message">
+
+        <span class="sender">
+          {{ message.sender }}
+        </span>
+
+        <span>
+          {{ message.content }}
+        </span>
+
+      </div>
+
+    }
+
+  </div>
+
+  <div class="input-zone">
+
+    <input
+      type="text"
+      [(ngModel)]="currentMessage"
+      placeholder="Saisir un message..."
+      (keyup.enter)="sendMessage()">
+
+    <button (click)="sendMessage()">
+      Envoyer
+    </button>
+
+  </div>
+
+</div>

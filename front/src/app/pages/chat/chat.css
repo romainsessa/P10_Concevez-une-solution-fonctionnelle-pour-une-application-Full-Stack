@@ -13,8 +13,31 @@
   margin-bottom: 20px;
 }
 
-.message {
+.message-container {
+  display: flex;
   margin-bottom: 10px;
+}
+
+.user-container {
+  justify-content: flex-start;
+}
+
+.support-container {
+  justify-content: flex-end;
+}
+
+.message {
+  max-width: 60%;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.user-message {
+  background: #dbeafe;
+}
+
+.support-message {
+  background: #dcfce7;
 }
 
 .sender {
@@ -35,4 +58,24 @@ input {
 
 button {
   width: 120px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e3a8a;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
 }

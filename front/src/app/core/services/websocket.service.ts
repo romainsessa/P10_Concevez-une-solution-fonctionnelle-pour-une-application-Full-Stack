@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { Client, IMessage } from '@stomp/stompjs';
 import { Subject } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { ChatMessage } from '../../models/chat-message';
 @Injectable({
     providedIn: 'root'
 })
-export class WebsocketService {
+export class WebsocketService implements OnDestroy {
 
     private client!: Client;
 
@@ -19,7 +19,12 @@ export class WebsocketService {
 
     constructor(
         private readonly ngZone: NgZone
-    ) {
+    ) { }
+
+    ngOnDestroy(): void {
+        if (this.client?.connected) {
+            this.client.deactivate();
+        }
     }
 
     connect(): void {

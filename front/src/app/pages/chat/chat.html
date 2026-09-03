@@ -1,0 +1,53 @@
+<div class="chat-page">
+  <div class="header">
+    <img src="/Logo YCYW.png" alt="Logo YCYW" class="logo">
+    <h1>YCYW Chat</h1>
+  </div>
+  <h2>
+    Mode : {{ role }}
+  </h2>
+
+  <div class="messages">
+
+    @for (message of messages; track $index) {
+
+    <div 
+      class="message-container" 
+      [class.user-container]="message.sender === 'USER'"
+      [class.support-container]="message.sender === 'SUPPORT'">
+
+      <div 
+        class="message" 
+        [class.user-message]="message.sender === 'USER'"
+        [class.support-message]="message.sender === 'SUPPORT'">
+
+        <span class="timestamp">
+          {{ message.timestamp | date:'HH:mm:ss' }}
+        </span>
+
+        <span class="sender">
+          {{ message.sender }}
+        </span>
+
+        <span>
+          {{ message.content }}
+        </span>
+
+      </div>
+    </div>
+
+    }
+
+  </div>
+
+  <div class="input-zone">
+
+    <input type="text" [(ngModel)]="currentMessage" placeholder="Saisir un message..." (keyup.enter)="sendMessage()">
+
+    <button (click)="sendMessage()">
+      Envoyer
+    </button>
+
+  </div>
+
+</div>
